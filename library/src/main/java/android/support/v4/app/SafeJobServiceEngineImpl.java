@@ -40,7 +40,7 @@ public class SafeJobServiceEngineImpl extends JobServiceEngine
                 if (mParams != null) {
                     try {
                         mParams.completeWork(mJobWork);
-                    } catch (SecurityException se) {
+                    } catch (Exception se) {
                         // ignore
                         se.printStackTrace();
                     }
