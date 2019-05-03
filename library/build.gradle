@@ -1,5 +1,6 @@
 apply plugin: 'com.android.library'
 apply plugin: 'com.github.ben-manes.versions'
+apply plugin: 'com.github.dcendents.android-maven'
 apply from: '../build-config/gradle-quality.gradle'
 
 archivesBaseName = 'android-job'
