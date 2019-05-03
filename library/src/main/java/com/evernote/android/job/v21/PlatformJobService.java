@@ -75,7 +75,11 @@ public class PlatformJobService extends JobService {
 
                 } finally {
                     // do not reschedule
-                    jobFinished(params, false);
+                    try {
+                        jobFinished(params, false);
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
                 }
             }
         });
