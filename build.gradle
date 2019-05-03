@@ -12,6 +12,9 @@ buildscript {
 
 allprojects {
     repositories {
+        maven {
+            url 'https://maven.google.com/'
+        }
         jcenter()
         google()
     }
@@ -39,6 +42,6 @@ ext {
 }
 
 task wrapper(type: Wrapper) {
-    gradleVersion = '4.7'
+    gradleVersion = '4.6'
     distributionUrl = "https://services.gradle.org/distributions/gradle-$gradleVersion-all.zip"
 }
