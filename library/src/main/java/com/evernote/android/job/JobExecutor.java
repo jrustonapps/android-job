@@ -17,6 +17,7 @@ package com.evernote.android.job;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.PowerManager;
 import android.support.annotation.NonNull;
@@ -155,7 +156,18 @@ import java.util.concurrent.TimeUnit;
             mJob = job;
 
             Context context = mJob.getContext();
-            mWakeLock = WakeLockUtil.acquireWakeLock(context, "JobExecutor", WAKE_LOCK_TIMEOUT);
+
+            String tag = "JobExecutor";
+
+            try {
+                if (Build.MANUFACTURER.equals("Huawei")) {
+                    tag = "LocationManagerService";
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+            mWakeLock = WakeLockUtil.acquireWakeLock(context, tag, WAKE_LOCK_TIMEOUT);
         }
 
         @Override
